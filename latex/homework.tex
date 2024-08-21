@@ -1,0 +1,250 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+
+\usetikzlibrary{automata,positioning}
+
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+
+
+\definecolor{mylightgray}{rgb}{0.95,0.95,0.95}
+
+\lstset{%
+  backgroundcolor=\color{mylightgray},
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  stringstyle=\color{green},
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  stepnumber=1,
+  numbersep=5pt,
+  breaklines=true,
+  breakatwhitespace=false,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  frame=single,
+  tabsize=4,
+  captionpos=b,
+  language=Matlab
+}
+
+
+
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\ : \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Problem Sections
+%
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Final Project}
+\newcommand{\hmwkClass}{Introduction To Image and Video Processing}
+\newcommand{\hmwkClassInstructor}{Professor Nasser Nasrabadi}
+\newcommand{\hmwkAuthorName}{\textbf{Komel Merchant}}
+
+%
+% Title Page
+%
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor\ \hmwkClassTime}}
+    \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+
+\begin{homeworkProblem}
+
+	\textbf{Part 1 [question(s): 1, 2]}
+	\\
+	Using the standard hierarchical reconstruction methods and using zero-images, I generated plots for all three cases in question 1 in Figure \ref{fig:p1}. Entropy values for each sub-band can be found in plot \ref{fig:p2}.
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+
+	\textbf{Part 2 [question(s): 3,4,5,6]}
+	\\
+
+	I first used performed zero-crossing analysis using a LoG filter to create a gradient image. Zero-crossing image can be seen in the first swatch on the left in Figure \ref{fig:p3a}. I then performed this hierarchical reconstruction. This time, all patches, with the exception of, the first were down-sampled by using the zero-crossing "map" as a mask. Results at each level can be seen in Figures \ref{fig:p3a}, \ref{fig:p3b} and \ref{fig:p3c}. PSNRs can be found in the plot titles of each reconstruction swatch.
+\end{homeworkProblem}
+
+
+
+
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\linewidth]{/home/komelmerchant/Desktop/JHUCourseTracking/ImageAndVideoProcessing/final/latex/p1.png}
+	\caption{Reconstruction results and PSNRs for a, b, and c.}
+	\label{fig:p1}
+\end{figure}
+
+
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\linewidth]{/home/komelmerchant/Desktop/JHUCourseTracking/ImageAndVideoProcessing/final/latex/p2.png}
+	\caption{Entropy Bar Graph for each sub-band}
+	\label{fig:p2}
+\end{figure}
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\linewidth]{/home/komelmerchant/Desktop/JHUCourseTracking/ImageAndVideoProcessing/final/latex/p3-a.png}
+	\caption{LLLL Reconstruction From Edge-based Reconstruction}
+	\label{fig:p3a}
+\end{figure}
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\linewidth]{/home/komelmerchant/Desktop/JHUCourseTracking/ImageAndVideoProcessing/final/latex/p3-b.png}
+	\caption{LL Reconstruction From Edge-based Reconstruction}
+	\label{fig:p3b}
+\end{figure}
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\linewidth]{/home/komelmerchant/Desktop/JHUCourseTracking/ImageAndVideoProcessing/final/latex/p3-c.png}
+	\caption{Full Image Reconstruction From Edge-based Reconstruction}
+	\label{fig:p3c}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+\pagebreak
+
+
+\end{document}
+
